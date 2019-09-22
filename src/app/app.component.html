@@ -6,9 +6,9 @@
 <div id="recordingsection">
   <h1>Accent Classification</h1>
   <div id="controls">
-     <button id="recordButton">Record</button>
+     <button id="recordButton" (click) ="begin()">Record</button>
      <!-- <button id="pauseButton" disabled>Pause</button> -->
-     <button id="stopButton" disabled>Stop</button>
+     <button id="stopButton" (click) ="stop()">Stop</button>
   </div>
   <div id="formats">Format: start recording to see sample rate
 
@@ -17,3 +17,4 @@
     <ol id="recordingsList"></ol>
     <button id="test">send to server</button>
   <a ><button id="predictButton">Predict</button></a>
+ <!-- {% comment %} <input type="button" value="Click" (click) ="getTrainingName()"> {% endcomment %} -->

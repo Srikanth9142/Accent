@@ -22,10 +22,14 @@ export class RecordingService {
   constructor() {
     this.init();
   }
-  private init() {
+  private init() {}
+
+  begin(){
 
     let constraints = { audio: true, video: false }
+    console.log("begin");
     navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+      this.start();
       console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
 
       /*
@@ -46,9 +50,13 @@ export class RecordingService {
       */
       this.voice_recorder = new Recorder(input, { numChannels: 2 })
 
-    }).catch(function (err) {
-
     });
+    //catch
+    
+    
+    // (function (err) {
+    //     console.log("denied");
+    // });
 
 
     this.recording = false;
@@ -84,15 +92,20 @@ export class RecordingService {
 
 
   startRecording() {
-    if (this.recording || !Recorder.isRecordingSupported()) {
+    console.log("start");
+    if (this.recording) {
+      console.log("already recording");
       return;
     }
     this.recording = true;
+
     this.voice_recorder.record();
   }
 
   stopRecording(save:boolean = true) {
+    
     if (this.recording) {
+      console.log("stop");
       this.recording = false;
       //tell the recorder to stop the recording
       this.voice_recorder.stop();

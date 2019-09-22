@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers } from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-
+  constructor(private http:HttpClient){}
   saveAudio(data: any): any {
     return this.http.post(`YOUR PATH`, data,
        {
@@ -13,5 +13,4 @@ export class DataService {
           }
        });
  }
-  constructor() { }
 }
